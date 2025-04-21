@@ -478,13 +478,13 @@ func Wallet() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	util.Log("Transaction sent successfully, SignedTx: ", signedTx.Hash().Hex())
+	util.Log("tx successfully, SignedTx: ", signedTx.Hash().Hex())
 	// 等待交易被挖矿
 	receipt, err := waitForReceipt(client, signedTx.Hash())
 	if err != nil {
 		log.Fatal(err)
 	}
-	util.Log("Transaction sent successfully, SignedTx: ", signedTx.Hash().Hex(), receipt.Status)
+	util.Log("tx successfully, SignedTx: ", signedTx.Hash().Hex(), ", receipt Status: ", receipt.Status)
 	util.Separator()
 }
 

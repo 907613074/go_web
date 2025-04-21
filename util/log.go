@@ -5,6 +5,7 @@ import (
 	"os"
 	"runtime"
 	"strings"
+	"time"
 )
 
 var _dir string
@@ -15,8 +16,9 @@ func init() {
 		fmt.Println("Error:", err)
 		return
 	}
-	// fmt.Println(dir)
+
 	_dir = strings.ReplaceAll(dir, "\\", "/")
+	Log("Current directory:", _dir)
 }
 
 // Log 打印带有文件名、行号、方法名和内容的日志
@@ -31,10 +33,9 @@ func Log(v ...interface{}) {
 	funcName := runtime.FuncForPC(pc).Name()
 	// 提取方法名（去掉包路径）
 	funcName = strings.Split(funcName, ".")[len(strings.Split(funcName, "."))-1]
+	funcName = fmt.Sprintf("%-17s", funcName)
 
-	// 打印日志信息
-	fmt.Printf("%s %s %d %v %v\n", strings.Replace(file, _dir, "", 1), funcName, line, "==>  ", v)
-
+	fmt.Printf("\n%s %s:%d \n[%s] ==>  %v\n", time.Now().Format("2006-01-02 15:04:05"), file, line, funcName, v)
 }
 
 func Separator() {
