@@ -18,11 +18,11 @@ func main() {
 	eth.PrivateKey()
 	// eth.TestQueryBlock()
 
-	// eth.Wallet()
+	eth.Wallet()
 
 	// eth.QueryTokenBalance()
 	// eth.DigitalAssetToken()
-	// eth.LoadContract()
+	eth.LoadContract()
 	// eth.QueryEvent()
 	// eth.SubscribeNewHead()
 	/*
